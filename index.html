@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f1712">
+  <meta name="description" content="Desi Cuisine — fresh homemade Pakistani-style food. Pickup orders via WhatsApp.">
+  <title>Desi Cuisine — Menu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="#" aria-label="Desi Cuisine home">
+        <span class="brand-logo-wrap">
+          <img src="logo.png.webp" alt="Desi Cuisine logo" class="brand-logo"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <span class="logo-fallback" aria-hidden="true">DC</span>
+        </span>
+        <span class="brand-copy">
+          <strong>Desi Cuisine</strong>
+          <small>Homemade with love</small>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <button class="search-trigger" id="focusSearch" type="button" aria-label="Search menu">⌕ <span>Search</span></button>
+        <button class="cart-button" id="openCart" type="button" aria-label="Open order">
+          <span>🛒</span><span>Order</span><b id="cartCount">0</b>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">PAKISTANI-STYLE HOMEMADE FOOD</span>
+        <h1>Good food.<br><em>Good mood.</em></h1>
+        <p>Fresh food made with love & care — just for you ❤️</p>
+        <div class="hero-pills">
+          <span>✓ Halal</span>
+          <span>✓ Freshly prepared</span>
+          <span>✓ Pickup only</span>
+        </div>
+      </div>
+      <div class="hero-mark" aria-hidden="true">
+        <div class="plate">🍛</div>
+        <span>DESI<br>CUISINE</span>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="section-top">
+        <div>
+          <span class="section-kicker">OUR MENU</span>
+          <h2>Choose your favourites</h2>
+        </div>
+        <div class="menu-search">
+          <span>⌕</span>
+          <input id="searchInput" type="search" autocomplete="off" placeholder="Search food..." aria-label="Search food">
+          <button id="clearSearch" type="button" aria-label="Clear search">×</button>
+        </div>
+      </div>
+
+      <div class="category-tabs" role="tablist" aria-label="Menu categories">
+        <button class="tab active" data-category="All" type="button">All</button>
+        <button class="tab" data-category="Main Dishes" type="button">🍛 Main Dishes</button>
+        <button class="tab" data-category="Side Dishes" type="button">🍟 Side Dishes</button>
+      </div>
+
+      <div class="results-note" id="resultsNote"></div>
+      <div class="product-grid" id="productGrid"></div>
+      <button class="load-more" id="loadMore" type="button">Show more dishes</button>
+      <div class="empty-state" id="emptyState" hidden>
+        <div>🍽️</div>
+        <h3>No dish found</h3>
+        <p>Try another food name.</p>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="about-card">
+        <span class="section-kicker">ABOUT US</span>
+        <h2>Made fresh, served with heart.</h2>
+        <p>Welcome to <b>Desi Cuisine</b> — authentic Pakistani-style desi food with real homemade taste.</p>
+        <div class="about-points">
+          <div><span>🥘</span><strong>Fresh</strong><small>Prepared for your order</small></div>
+          <div><span>☪️</span><strong>100% Halal</strong><small>Quality ingredients</small></div>
+          <div><span>🚗</span><strong>Pickup only</strong><small>No delivery currently</small></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>Desi Cuisine</strong>
+      <p>Fresh homemade food made with love ❤️</p>
+    </div>
+    <div class="contact-links">
+      <a href="https://wa.me/40727795784" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/desi_cuisine26/" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:desicusinee@gmail.com">Email</a>
+    </div>
+    <small>© 2026 Desi Cuisine. All rights reserved.</small>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Your order" aria-hidden="true">
+    <div class="cart-head">
+      <div>
+        <span class="section-kicker">YOUR ORDER</span>
+        <h2>Order list</h2>
+      </div>
+      <button class="icon-button" id="closeCart" type="button" aria-label="Close order">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-empty" id="cartEmpty">
+      <div>🛒</div>
+      <h3>Your order is empty</h3>
+      <p>Add dishes from the menu and they will appear here.</p>
+    </div>
+
+    <div class="order-form" id="orderForm">
+      <label>
+        Your name <span>(optional)</span>
+        <input id="customerName" type="text" placeholder="Your name">
+      </label>
+      <label>
+        Anything else?
+        <textarea id="extraRequest" rows="3" placeholder="e.g. less spicy, extra sauce..."></textarea>
+      </label>
+      <div class="total-row">
+        <span>Total</span>
+        <strong id="cartTotal">RON 0</strong>
+      </div>
+      <button class="whatsapp-order" id="sendOrder" type="button">💬 Send order on WhatsApp</button>
+      <p class="pickup-note">📍 Pickup only. Your WhatsApp message will contain the complete item list and quantities.</p>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    window.MENU_DATA = [{"id":"chicken-koftay-curry","name":"Chicken Koftay Curry","subtitle":"(Rice Or Naan)","price":35,"img":"gift9.webp","category":"Main Dishes"},{"id":"butter-chicken","name":"Butter Chicken","subtitle":"(Rice Or Naan)","price":35,"img":"gift10.webp","category":"Main Dishes"},{"id":"chicken-achar-gosht","name":"Chicken Achar Gosht","subtitle":"(Rice Or Naan)","price":35,"img":"gift11.webp","category":"Main Dishes"},{"id":"chicken-tikka-masala","name":"Chicken Tikka Masala","subtitle":"(Rice Or Naan)","price":35,"img":"gift12.webp","category":"Main Dishes"},{"id":"chicken-nihari","name":"Chicken Nihari","subtitle":"(Rice Or Naan)","price":35,"img":"gift13.webp","category":"Main Dishes"},{"id":"chicken-qourma","name":"Chicken Qourma","subtitle":"(Rice Or Naan)","price":35,"img":"gift14.webp","category":"Main Dishes"},{"id":"malai-chicken","name":"Malai Chicken","subtitle":"(Rice Or Naan)","price":35,"img":"gift15.webp","category":"Main Dishes"},{"id":"chicken-koyla-karahi","name":"Chicken Koyla Karahi","subtitle":"(Rice Or Naan)","price":35,"img":"gift16.webp","category":"Main Dishes"},{"id":"murgh-choley","name":"Murgh Choley","subtitle":"(Rice Or Naan)","price":35,"img":"gift17.webp","category":"Main Dishes"},{"id":"chicken-jalfrezi","name":"Chicken Jalfrezi","subtitle":"(Rice Or Naan)","price":35,"img":"gift18.webp","category":"Main Dishes"},{"id":"chicken-manchurian","name":"Chicken Manchurian","subtitle":"(Rice Or Naan)","price":35,"img":"gift19.webp","category":"Main Dishes"},{"id":"seekh-kebab","name":"Seekh Kebab","subtitle":"(Naan) Garlic Sauce","price":35,"img":"gift20.webp","category":"Main Dishes"},{"id":"chicken-mushroom-pasta","name":"Chicken mushroom pasta","subtitle":"","price":35,"img":"gift21.webp","category":"Main Dishes"},{"id":"chicken-qeema-pasta","name":"Chicken Qeema Pasta","subtitle":"","price":35,"img":"gift22.webp","category":"Main Dishes"},{"id":"chicken-steak-with-mushroom-suace-potato-puree-with-vegetable","name":"Chicken Steak with Mushroom Suace Potato Puree with Vegetable","subtitle":"","price":35,"img":"gift23.webp","category":"Main Dishes"},{"id":"chicken-cheese-burgers-with-fries","name":"Chicken Cheese Burgers with Fries","subtitle":"","price":35,"img":"gift24.webp","category":"Main Dishes"},{"id":"macandcheese-chicken-loaded-fries","name":"Mac&Cheese Chicken Loaded Fries","subtitle":"","price":35,"img":"gift25.webp","category":"Main Dishes"},{"id":"shawarma-bowl","name":"Shawarma Bowl","subtitle":"","price":35,"img":"gift26.webp","category":"Main Dishes"},{"id":"peri-peri-chicken-flavoured-rice","name":"Peri Peri Chicken Flavoured Rice","subtitle":"","price":35,"img":"gift27.webp","category":"Main Dishes"},{"id":"chicken-chapli-kebab","name":"Chicken Chapli Kebab","subtitle":"(Naan) Garlic Sauce","price":35,"img":"gift58.webp.webp","category":"Main Dishes"},{"id":"chicken-sheet-pan-kebab-with-yellow-rice","name":"Chicken Sheet Pan Kebab with Yellow Rice","subtitle":"","price":35,"img":"gift59.webp","category":"Main Dishes"},{"id":"peri-peri-chicken-skewers","name":"Peri Peri Chicken Skewers","subtitle":"","price":20,"img":"gift60.webp","category":"Main Dishes"},{"id":"peri-peri-chicken-sandwich","name":"Peri Peri Chicken Sandwich","subtitle":"","price":25,"img":"gift61.webp","category":"Main Dishes"},{"id":"chilli-garlic-creamy-noodles","name":"Chilli Garlic Creamy Noodles","subtitle":"","price":28,"img":"gift62.webp","category":"Main Dishes"},{"id":"nargisi-koftay","name":"Nargisi Koftay","subtitle":"","price":35,"img":"gift64.webp","category":"Main Dishes"},{"id":"chicken-sajji","name":"Chicken Sajji","subtitle":"","price":35,"img":"gift69.webp","category":"Main Dishes"},{"id":"mahmous-qataifi","name":"Mahmous Qataifi","subtitle":"","price":35,"img":"gift70.webp","category":"Main Dishes"},{"id":"chicken-tikka-pulao","name":"Chicken Tikka Pulao","subtitle":"","price":35,"img":"gift71.webp","category":"Main Dishes"},{"id":"chicken-sindhi-biryani","name":"Chicken Sindhi Biryani","subtitle":"","price":35,"img":"gift73.webp","category":"Main Dishes"},{"id":"curry-pakora","name":"Curry Pakora","subtitle":"(Rice Or Roti)","price":35,"img":"gift74.webp","category":"Main Dishes"},{"id":"chicken-stew","name":"Chicken Stew","subtitle":"(Rice Or Roti)","price":35,"img":"gift75.webp","category":"Main Dishes"},{"id":"kate-masale-ki-karhai","name":"Kate Masale Ki Karhai","subtitle":"(Rice Or Roti)","price":35,"img":"gift76.webp","category":"Main Dishes"},{"id":"chicken-cheese-karhai","name":"Chicken Cheese Karhai","subtitle":"(Rice Or Roti)","price":35,"img":"gift77.webp","category":"Main Dishes"},{"id":"chicken-malai-kebab-gravy","name":"Chicken Malai Kebab Gravy","subtitle":"(Rice Or Roti)","price":35,"img":"gift78.webp","category":"Main Dishes"},{"id":"chicken-charsi-karhai","name":"Chicken Charsi Karhai","subtitle":"(Rice Or Roti)","price":35,"img":"gift79.webp","category":"Main Dishes"},{"id":"hyderabadi-chicken-handi","name":"Hyderabadi Chicken Handi","subtitle":"(Rice Or Roti)","price":35,"img":"gift80.webp","category":"Main Dishes"},{"id":"stuffed-chicken-capsicum","name":"Stuffed Chicken Capsicum","subtitle":"","price":35,"img":"gift82.webp","category":"Main Dishes"},{"id":"chicken-noodles","name":"Chicken Noodles","subtitle":"","price":28,"img":"gift86.webp","category":"Main Dishes"},{"id":"sausage-roll","name":"Sausage Roll","subtitle":"","price":3,"img":"gift88.webp","category":"Side Dishes"},{"id":"dragon-chicken","name":"Dragon Chicken","subtitle":"","price":25,"img":"gift85.webp","category":"Side Dishes"},{"id":"tikka-boti","name":"Tikka Boti","subtitle":"","price":20,"img":"gift29.webp","category":"Side Dishes"},{"id":"aloo-paratha","name":"Aloo Paratha","subtitle":"with Garlic Sauce","price":25,"img":"gift30.webp","category":"Side Dishes"},{"id":"tandoori-chicken-skewers","name":"Tandoori Chicken Skewers","subtitle":"","price":20,"img":"gift31.webp","category":"Side Dishes"},{"id":"shish-tawook","name":"Shish Tawook","subtitle":"","price":20,"img":"gift33.webp","category":"Side Dishes"},{"id":"shish-tawook-s-wich","name":"Shish Tawook S/Wich","subtitle":"","price":25,"img":"gift34.webp","category":"Side Dishes"},{"id":"tandoori-chicken","name":"Tandoori Chicken","subtitle":"","price":25,"img":"gift35.webp","category":"Side Dishes"},{"id":"chicken-fired-momos-with-gravy","name":"Chicken Fired Momos with Gravy","subtitle":"","price":25,"img":"gift36.webp","category":"Side Dishes"},{"id":"chicken-65","name":"Chicken 65","subtitle":"","price":25,"img":"gift38.webp","category":"Side Dishes"},{"id":"chicken-with-loaded-fries","name":"Chicken with Loaded fries","subtitle":"","price":20,"img":"gift41.webp","category":"Side Dishes"},{"id":"qeema-quasidella","name":"Qeema Quasidella","subtitle":"","price":25,"img":"gift45.webp","category":"Side Dishes"},{"id":"chicken-paratha-roll","name":"Chicken Paratha Roll","subtitle":"","price":20,"img":"gift49.webp","category":"Side Dishes"},{"id":"sausage-roll","name":"Sausage Roll With Cheese","subtitle":"","price":5,"img":"gift88.webp","category":"Side Dishes"},{"id":"chicken-tikka-biryani","name":"Chicken Tikka Biryani","subtitle":"with Raita","price":35,"img":"gift.webp","category":"Main Dishes"},{"id":"hyderabadi-dum-biryani","name":"Hyderabadi Dum Biryani","subtitle":"with Raita","price":35,"img":"gift1.webp","category":"Main Dishes"},{"id":"butter-chicken-biryani","name":"Butter Chicken Biryani","subtitle":"","price":35,"img":"gift2.webp","category":"Main Dishes"},{"id":"chicken-yakhni-pulao","name":"Chicken Yakhni Pulao","subtitle":"with Raita","price":35,"img":"gift3.webp","category":"Main Dishes"},{"id":"singaporean-rice","name":"Singaporean Rice","subtitle":"","price":35,"img":"gift4.webp","category":"Main Dishes"},{"id":"tandoori-chk-rice-box","name":"Tandoori Chk. Rice Box","subtitle":"","price":35,"img":"gift5.webp","category":"Main Dishes"},{"id":"chicken-kabsa","name":"Chicken Kabsa","subtitle":"","price":35,"img":"gift6.webp","category":"Main Dishes"},{"id":"chicken-mandi","name":"Chicken Mandi","subtitle":"","price":35,"img":"gift63.webp","category":"Main Dishes"},{"id":"achari-chk-skewers","name":"Achari Chk. skewers","subtitle":"with Masala Rice","price":35,"img":"gift7.webp","category":"Main Dishes"},{"id":"chicken-dum-qeema","name":"Chicken Dum Qeema","subtitle":"(Rice Or Naan)","price":35,"img":"gift8.webp","category":"Main Dishes"}];
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
